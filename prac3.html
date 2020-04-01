@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<!--
+	Halcyonic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>practicas</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Logo -->
+									<h1><a href="index.html" id="logo">Prácticas</a></h1>
+
+								<!-- Nav -->
+									<nav id="nav">
+										<a href="index.html"> Inicio</a>
+										<a href="nos.html">Nosotros</a>
+										<a href="practicas.html">Prácticas</a>
+										<a href="proyec.html">Proyecto</a>
+									</nav>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Content -->
+				<section id="content">
+					<div class="container">
+						<div class="row">
+							<div class="col-3 col-12-medium">
+
+								<!-- Left Sidebar -->
+									<section>
+										<header>
+											<h2 style="color: rgb(11, 13, 141)">Prácticas</h2>
+										</header>
+										<p style="color: blueviolet;">
+											En este apartado se encuentran las prácticas de la materia
+										</p>
+										<ul class="link-list">
+											<li><a href="practicas.html">Práctica 1</a></li>
+											<li><a href="prac2.html">Práctica 2</a></li>
+											<li><a href="prac3.html">Práctica 3</a></li>
+											<li><a href="prac4.html">Práctica 4</a></li>
+										</ul>
+									</section>
+							</div>
+							<div class="col-8 col-12-medium imp-medium" style="background-color: rgb(255, 255, 255);">
+
+								<!-- Main Content -->
+									<section>
+										<header>
+											<h2 style="color: rgb(4, 77, 38);">Práctica 3</h2>
+										</header>
+										<p>
+											<h3 style="color: rgb(12, 22, 167);">Introducción</h3>
+										<p style="color: rgb(0, 0, 0);">
+											Conocer, identificar y comprobar el funcionamiento al desarrollar un protocolo de comunicación, en esta tercera parte de un convertidor a binario.
+
+										</p>
+										
+										<p>
+											<h3 style="color: rgb(12, 22, 167);">Objetivos</h3>
+											<p style="color: rgb(0, 0, 0);">
+												• Utilizando 1 Arduino, diseñar un sistema que permita convertir el valor analógico de un potenciómetro en un arreglo de variables que representen 
+												el numero en binario de 8 bits, de tal forma que podamos ver cada uno de los valores como salidas digitales en los pines del Arduino.<br>
+												• Utilizando un segundo Arduino, diseñar una función que permita convertir el valor en binario obtenido de 8 puertos digitales del Arduino en un 
+												valor entero en sistema decimal y mostrarlos en el monitor serial. Utilizar el primer Arduino para generar los valores digitales en binario y el segundo 
+												Arduino utilizarlo para decodificarlos y convertirlos en un valor decimal. <br>
+											</p>
+											
+											<h3 style="color: rgb(12, 22, 167);">Marco teórico</h3>
+											<p style="color: black;">
+												Sistema Binario:
+											    El sistema binario es un sistema de numeración en el que los números se representan utilizando las cifras 0 y 1, es decir solo 2 dígitos (bi = dos). Esto en informática 
+											    y en electrónica tiene mucha importancia ya que las computadoras trabajan internamente con 2 niveles: hay o no hay de Tensión, hay o no hay corriente, pulsado o sin pulsar, etc.
+											    Esto provoca que su sistema de numeración natural sea el binario, por ejemplo 1 para encendido y 0 para apagado. También se utiliza en electrónica y en electricidad (encendido 
+												o apagado, activado o desactivado, etc.).  El lenguaje binario es muy utilizado en el mundo de la tecnología. <br>
+											</p>
+											<p>
+												Según BM Corporation: La comunicación paralela es un método para transmitir muchos packs de múltiples dígitos en binarios (bits) de manera simultánea. 
+												A diferencia con la comunicación serie, la cual solo transmite un bit cada vez; esta es una de las características básicas que distinguen a los tipos de comunicaciones.
+												La diferencia básica entre un canal de comunicación en serie y uno en paralelo radica en el número de conductores eléctricos usados en la capa física para transmitir bits.
+												La comunicación en paralelo implica el uso de más de uno de estos conductores. Por ejemplo, un canal de 8 bits transmitirá 8 bits (o un byte) de manera simultánea, mientras
+												que un canal en serie solo podrá transmitir esta cadena de manera secuencial. Si ambos canales operan a la misma frecuencia de reloj, el canal paralelo sería ocho veces más 
+												rápido. Un canal paralelo puede tener conductores adicionales para otras señales, como una señal de reloj para moderar el flujo de dados, una señal para controlar el direccionamiento 
+												de datos y señales de handshaking.
+											
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Materiales usados</h3>
+											<p style="color: black;">
+												• Dos Arduino  <br>
+												• Protoboard  <br>
+												• Botónes  <br>
+												• LED’s  <br>
+												• Potenciometro  <br>
+												
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Desarrollo</h3>
+											<p>
+												Para el primer ejercicio utilizaremos solamente un arduino, que recibirá la señal del potenciómetro y la cambiara a binario.
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Código</h3>
+											<p>
+												Const int m = 10;  <br>
+												const int pinA = A0; //definimos el pin A0 como la entrada del potenciómetro al arduino  <br>
+												int valor;   <br>
+												int poten; //variable del potenciometro  <br>
+												byte estado = 0;  <br>
+												int binario[m];  <br>
+												const byte pin[]= {13,12,11,10,9,8,7,6};   <br>
+												void setup() {  <br>
+												for (int i = 0; i < 8; i++) {  <br>
+												pinMode(pin[i], OUTPUT);  <br>
+												}  <br>
+												Serial.begin(9600); //iniciamos la comunicación en serie  <br>
+												}  <br>
+												void loop() {  <br>
+												valor = analogRead(pinA);       //lee valor de potenciometro  <br>
+												poten = map(valor, 0, 1023, 0, 255);  //usamos la función map para obtener el valor del potenciómetro  <br>
+												delay(100);   <br>
+												Serial.println(poten); //imprimimos lla lectura de poten  <br>
+												//conversion  <br>
+												for(int j=0; j < 8; j++){  <br>
+												
+														binario[j] = poten % 2;  <br>
+
+														poten = poten / 2; <br>
+
+												if(binario[j]==0) { //conversion  <br>
+												digitalWrite(pin[j],LOW);// si el valor obtenido es 0 que sea LOW  <br>
+												}  <br>
+												else{  <br>
+												digitalWrite(pin[j],HIGH);  <br>
+												}  <br>
+												}  <br>
+												delay(5000);  <br>
+												}  <br>
+											</p>
+
+											<img src="images/practica3.jpeg" alt="demo" height="600" width="700">
+									</section>
+
+							</div>
+							
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

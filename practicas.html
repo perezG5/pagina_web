@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<!--
+	Halcyonic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>practicas</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Logo -->
+									<h1><a href="index.html" id="logo">Prácticas</a></h1>
+
+								<!-- Nav -->
+									<nav id="nav">
+										<a href="index.html"> Inicio</a>
+										<a href="nos.html">Nosotros</a>
+										<a href="practicas.html">Prácticas</a>
+										<a href="proyec.html">Proyecto</a>
+									</nav>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Content -->
+				<section id="content">
+					<div class="container">
+						<div class="row">
+							<div class="col-3 col-12-medium">
+
+								<!-- Left Sidebar -->
+									<section>
+										<header>
+											<h2 style="color: rgb(11, 13, 141)">Prácticas</h2>
+										</header>
+										<p style="color: blueviolet;">
+											En este apartado se encuentran las prácticas de la materia
+										</p>
+										<ul class="link-list">
+											<li><a href="practicas.html">Práctica 1</a></li>
+											<li><a href="prac2.html">Práctica 2</a></li>
+											<li><a href="prac3.html">Práctica 3</a></li>
+											<li><a href="prac4.html">Práctica 4</a></li>
+										</ul>
+									</section>
+							</div>
+							<div class="col-8 col-12-medium imp-medium" style="background-color: rgb(255, 255, 255);">
+
+								<!-- Main Content -->
+									<section>
+										<header>
+											<h2 style="color: rgb(4, 77, 38);">Práctica 1</h2>
+										</header>
+										<p>
+											<h3 style="color: rgb(12, 22, 167);">Introducción</h3>
+										<p style="color: rgb(0, 0, 0);">
+											Se desarrollarán dos códigos, usando dos Arduinos, el primero se encargará de enviar una cantidad determinada 
+											de pulsos con un tiempo dado como parámetro. El segundo recibirá los pulsos y se encargará de contarlos.Además,
+											se usará un led para demostrar el envío de pulsos.
+										</p>
+										
+										<p>
+											<h3 style="color: rgb(12, 22, 167);">Objetivo General</h3>
+											<p style="color: rgb(0, 0, 0);">
+												Se enviarán pulsos de un arduino a otro y  podremos de ver la cantidad de pulsos enviados y recibidos de uno a 
+												otro	
+											
+											<h3 style="color: rgb(12, 22, 167);">Marco teórico</h3>
+											<p style="color: black;">
+												Arduino es una plataforma de creación de electrónica de código abierto, la cual está basada en hardware y software 
+												libre, flexible y fácil de utilizar para los creadores y desarrolladores. Esta plataforma permite crear diferentes 
+												tipos de microordenadores de una sola placa a los que la comunidad de creadores puede darles diferentes tipos de 
+												uso. <br>
+												<p style="color: rgb(61, 48, 5);">Definición recuparada de: https://www.xataka.com/basics/que-arduino-como-funciona-que-puedes-hacer-uno </p>
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Materiales usados</h3>
+											<p style="color: black;">
+												• Dos Arduinos <br>
+												• Un Protoboard <br>
+												• Botones <br>
+												• LED’s <br>	
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Desarrollo</h3>
+											<p>
+												Se colocará un led en la salida de nuestro Arduino, el cual, enviará una señal para que se puedan observar de una mejor forma, los Arduinos 
+												se van a conectar usando los puertos digitales, Utilizaremos cables para realizar las conexiones para que permitan una comunicación.
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Código que manda pulsos</h3>
+											<p>
+												void setup{ <br>
+													pinMode(10,HIGH);  //Se inicializan los pines de salidas <br>
+													Pulsos(5,1000); // Llamado a la función <br>
+												  } <br>
+												  
+												  void Pulsos(int cantidad, int duracion){ //función para crear los pulsos  <br>
+													int i = 0; <br>
+													while(i <= cantidad) { //manda pulsos determinados por la variable cantidad <br>
+													  digitalWrite(10,HIGH); //Envía pulsos por el pin 10<br>
+													  delay(duracion/2); // se divide el tiempo establecido en el llamado de la función y se mantiene encendido la mitad del tiempo indicado <br>
+													  digitalWrite(10,LOW); //Apagado <br>
+													  delay(duracion/2);  <br>
+													  i++; <br>
+													} <br>
+												  } <br>
+												  
+												  void loop() {} <br>
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Código que recibe pulsos</h3>
+											<p> 
+												const int pin1 = 9; //El pin 9 es el receptor <br>
+												int cont = 0; //contador <br>
+
+												void setup() { <br>
+													pinMode(pin1, INPUT); <br>
+													Serial.begin(9600); //Establece la comunicación <br>
+												} <br>
+												void loop(){ <br>
+													if(digitalRead(pin1) == HIGH){  //se hace un if con la finalidad de que detecte un inicio (HIGH) <br>
+														cont++; //incrementa el contador <br>
+														while(digitalRead(pin1) == HIGH); <br>
+															Serial.println(cont); //imprime los pulsos contados <br>
+													} <br>
+												} <br>
+											</p>
+											<img src="images/arduino.jpeg" alt="demo" height="600" width="700">
+									</section>
+
+							</div>
+							
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

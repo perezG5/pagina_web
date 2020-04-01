@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<!--
+	Halcyonic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>practicas</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Logo -->
+									<h1><a href="index.html" id="logo">Prácticas</a></h1>
+
+								<!-- Nav -->
+									<nav id="nav">
+										<a href="index.html"> Inicio</a>
+										<a href="nos.html">Nosotros</a>
+										<a href="practicas.html">Prácticas</a>
+										<a href="proyec.html">Proyecto</a>
+									</nav>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Content -->
+				<section id="content">
+					<div class="container">
+						<div class="row">
+							<div class="col-3 col-12-medium">
+
+								<!-- Left Sidebar -->
+									<section>
+										<header>
+											<h2 style="color: rgb(11, 13, 141)">Prácticas</h2>
+										</header>
+										<p style="color: blueviolet;">
+											En este apartado se encuentran las prácticas de la materia
+										</p>
+										<ul class="link-list">
+											<li><a href="practicas.html">Práctica 1</a></li>
+											<li><a href="prac2.html">Práctica 2</a></li>
+											<li><a href="prac3.html">Práctica 3</a></li>
+											<li><a href="prac4.html">Práctica 4</a></li>
+										</ul>
+									</section>
+							</div>
+							<div class="col-8 col-12-medium imp-medium" style="background-color: rgb(255, 255, 255);">
+
+								<!-- Main Content -->
+									<section>
+										<header>
+											<h2 style="color: rgb(4, 77, 38);">Práctica 2</h2>
+										</header>
+										<p>
+											<h3 style="color: rgb(12, 22, 167);">Introducción</h3>
+										<p style="color: rgb(0, 0, 0);">
+											Se creará un código en arduino que enviará pulsos en un determinado tiempo, en el siguiente ejercicio se mostrará 
+											la duración que tuvo el pulso enviado. Después se hará un código que se encargará de leer los pulsos recibidos, además 
+											de indicarnos si es HIGH o LOW.
+										</p>
+										
+										<p>
+											<h3 style="color: rgb(12, 22, 167);">Objetivos</h3>
+											<p style="color: rgb(0, 0, 0);">
+												-Identificar y comprobar el funcionamiento de un protocolo de comunicación. <br>
+												-Diseñar una función que permita enviar un pulso con un tiempo en High determinado. <br>
+												-Con un segundo Arduino, diseñar una función que permita contar el tiempo de la duración de un pulso y mostrarlo en pantalla. <br>
+												-Utilizando ambos arduinos, conectar un pin de los Arduinos para enviar una serie de 4 bits desde el primer Arduino al segundo y
+												  mostrar los bits enviados por monitor serial. <br>
+												-La serie de 4 bits debe comenzar con un bit en High, cada uno de los bits debe de ser de un tamaño especifico,  el segundo Arduino 
+												 tiene que esperar 4 pulsos de un tamaño determinado y esta serie de pulsos comienza con el cambio de 0 a 1. <br>
+											</p>
+											
+											<h3 style="color: rgb(12, 22, 167);">Marco teórico</h3>
+											<p style="color: black;">
+												Protocolo de comunicación:
+												Se trata del conjunto de pautas que posibilitan que distintos elementos que forman parte de un sistema establezcan comunicaciones entre sí, 
+												intercambiando información.
+												l protocolo de comunicación determina cómo deben circular los mensajes dentro de una red. Cuando la circulación de la información se desarrolla 
+												en Internet, existen una serie de protocolos específicos que posibilitan el intercambio.
+												Los protocolos de comunicación en Internet más importantes son TCP (cuyas siglas pueden traducirse como Protocolo de Control de Transmisión) e 
+												IP (Protocolo de Internet). Su acción conjunta (TCP/IP) posibilita el enlace entre todos los equipos que acceden a la red.
+												<p style="color: rgb(100, 79, 9);">Definición recuparada de: https://definicion.de/protocolo-de-comunicacion/</p>
+											
+											</p>
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Materiales usados</h3>
+											<p style="color: black;">
+												• Dos Arduinos <br>
+												• Un Protoboard <br>
+												• Botones <br>
+												• LED’s <br>	
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Desarrollo</h3>
+											<p>
+												Se colocará un led en la salida de un Arduino, el cual estará enviando la señal, se conectarán los Arduino usando los puertos digitales y cables para 
+												conectarlos entre si.
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Código que manda pulsos</h3>
+											<p>
+												int tiempo = 121; //Duracion de señal <br>
+												void setup()  { <br>
+												pinMode(10,OUTPUT); //PIN salida <br>
+												} <br>
+												void send(int j) { <br>
+												int i = 1; <br>
+												while(i <= j){ <br>
+													digitalWrite(10,HIGH); <br>
+													delay(tiempo); <br>
+													digitalWrite(10,LOW); //Apagamos la señal <br>
+													delay(tiempo); //tiempo de apagado <br>
+													i++; <br>
+												} <br>
+												void loop() { <br>
+													send(4); //envío de señal <br>
+												} <br>
+
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Código que recibe pulsos</h3>
+											<p> 
+												int pin = 89 //El pin 9 recibe la señal <br>
+												unsigned long dur; //Declarar duracion usando long porque puede ser un numero alto y se necesita ser entero <br>
+												
+												
+												void setup() {<br>
+												  Serial.begin(9600); //Comunicación serial  <br>
+												  pinMode(pin, INPUT);//se declara el pin como entrada <br>
+												} <br>
+												void loop(){ <br>
+												  dura = pulseIn(pin, HIGH); //pulsein determina el tiempo que dura la funcion en HIGH <br>
+												  Serial.println((dur/1000)+1); //imprimimos la duracion  <br>
+												} <br>
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Objetivo 3</h3>
+											<p>Se cambia el código que envía por uno nuevo:</p>
+											<p>	
+												int n  =  0; <br>
+												int tiempo = 130; //Se agrega 9 mas en el tiempo para que se pueda leer la señal deseada <br>
+												void setup() { <br>
+												Serial.begin(9600); //inicializamos la comunicación serial <br>
+												pinMode(8,INPUT); //inicializamos el pin 8 como entrada <br>
+												read(4); //le indicamos que tiene que leer 4 veces <br>
+												} <br>
+												void read(int j) { <br>
+												int est; <br>
+												if(digitalRead(9) == HIGH) { //Indica que el PIN esté en HIGH <br>
+													delay(tiempo);  <br>
+													int i = 1;  <br>
+													while(i <= j) {//Este ciclo es el que imprimirá la señal <br>
+													estado = digitalRead(9); <br>
+													Serial.print(est); <br>
+													delay(tiempo); <br>
+													i++;  <br>
+													} <br>
+													} <br>
+												}<br>
+												void loop() {} <br>
+
+											</p>
+
+											<img src="images/practica2.jpeg" alt="demo" height="600" width="700">
+									</section>
+
+							</div>
+							
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<!--
+	Halcyonic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>practicas</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Logo -->
+									<h1><a href="index.html" id="logo">Prácticas</a></h1>
+
+								<!-- Nav -->
+									<nav id="nav">
+										<a href="index.html"> Inicio</a>
+										<a href="nos.html">Nosotros</a>
+										<a href="practicas.html">Prácticas</a>
+										<a href="proyec.html">Proyecto</a>
+									</nav>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Content -->
+				<section id="content">
+					<div class="container">
+						<div class="row">
+							<div class="col-3 col-12-medium">
+
+								<!-- Left Sidebar -->
+									<section>
+										<header>
+											<h2 style="color: rgb(11, 13, 141)">Prácticas</h2>
+										</header>
+										<p style="color: blueviolet;">
+											En este apartado se encuentran las prácticas de la materia
+										</p>
+										<ul class="link-list">
+											<li><a href="practicas.html">Práctica 1</a></li>
+											<li><a href="prac2.html">Práctica 2</a></li>
+											<li><a href="prac3.html">Práctica 3</a></li>
+											<li><a href="prac4.html">Práctica 4</a></li>
+										</ul>
+									</section>
+							</div>
+							<div class="col-8 col-12-medium imp-medium" style="background-color: rgb(255, 255, 255);">
+
+								<!-- Main Content -->
+									<section>
+										<header>
+											<h2 style="color: rgb(4, 77, 38);">Práctica 4</h2>
+										</header>
+										<p>
+											<h3 style="color: rgb(12, 22, 167);">Introducción</h3>
+										<p style="color: rgb(0, 0, 0);">
+											En la práctica número cuatro se busca poder identificar y comprobar el funcionamiento al desarrollar un protocolo de comunicación asíncrono
+										</p>
+										
+										<p>
+											<h3 style="color: rgb(12, 22, 167);">Objetivos</h3>
+											<p style="color: rgb(0, 0, 0);">
+												• Utilizando 1 Arduino, diseñar un sistema que permita convertir el valor analógico de un potenciómetro en un arreglo de variables que representen el numero en binario de 8 bits, y los deposite en un arreglo [ ], Finalmente elaborar un código de programación que permita enviar los bits del arreglo en orden y en serie siguiendo las siguientes características:
+												• Iniciar el envió de los datos siempre con una señal HIGH (En total se enviarán 9 datos, el primer bit en HIGH y posteriormente los 8 bits de información).
+												• Enviar los datos con una duración del pulso predeterminada, ejemplo 1000 ms
+												• Enviar siempre la misma cantidad de bits.
+												<img src="images/prac.png" alt="demo" height="450" width="650"> <br>
+												• Utilizando un segundo Arduino, diseñar una función que permita adquirir el valor en bits de la señal de comunicación del Arduino anterior, la procese y la convierte en un dato decimal que finalmente enviara al monitor serial.
+											</p>
+
+											
+											<h3 style="color: rgb(12, 22, 167);">Marco teórico</h3>
+											<p style="color: black;">
+												Protocolo de comunicación:
+												Se trata del conjunto de pautas que posibilitan que distintos elementos que forman parte de un sistema establezcan comunicaciones entre sí, 
+												intercambiando información.
+												l protocolo de comunicación determina cómo deben circular los mensajes dentro de una red. Cuando la circulación de la información se desarrolla 
+												en Internet, existen una serie de protocolos específicos que posibilitan el intercambio.
+												Los protocolos de comunicación en Internet más importantes son TCP (cuyas siglas pueden traducirse como Protocolo de Control de Transmisión) e 
+												IP (Protocolo de Internet). Su acción conjunta (TCP/IP) posibilita el enlace entre todos los equipos que acceden a la red.
+												<p style="color: rgb(100, 79, 9);">Definición recuparada de: https://definicion.de/protocolo-de-comunicacion/</p>
+											</p>
+											<p>
+												Comunicación asíncrona. Es la conexión que se establece entre el cliente y el servidor que permite la transferencia de datos no sincrónica, 
+												o sea el cliente puede realizar varias peticiones al servidor sin necesidad de esperar por la respuesta de la primera. <br>
+												A diferencia, las conexiones sincrónicas solo pueden realizar una petición al servidor y hasta que esta no sea respondida no se puede realizar la siguiente.
+												<p style="color: rgb(100, 79, 9);">Definición recuparada de:https://www.ecured.cu/Comunicaci%C3%B3n_as%C3%ADncrona </p>
+											
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Materiales usados</h3>
+											<p style="color: black;">
+												• Dos Arduino
+												• Protoboard
+												• Botónes
+												• LED’s
+												• Potenciometro
+												
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Desarrollo</h3>
+											<p>
+												Se colocará un led en la salida del Arduino que está enviando la señal para que se puedan apreciar las señales, se conectaran los Arduinos utilizando los puertos 
+												digitales, con ayuda de cables realizaremos las conexiones pertinentes para que la comunicación sea posible.
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Código de envío</h3>
+											<p>
+												//Enviar <br>
+													const int pin1 = 12;  <br>
+													const int m = 10; <br>
+													int valor;   <br>
+													int poten; <br>
+													byte estado = 0;    <br>
+													int binary[m]; //declaramos un arreglo de 10 espacios <br>
+
+													void set(){ <br>
+													pinMode(pin1, OUTPUT);  <br>
+													Serial.begin(9600); //iniciamos la comunicación en serie <br>
+													} <br>
+													void send(int j) { <br>
+													//Potenciometro a 255 <br>
+													valor = analogRead(A0);   //Valor de potenciometro <br>
+													poten = map(valor, 0, 1023, 0, 255);  //Hacemos uso de la función map para convertir el valor del potenciometro <br>
+													Serial.println(poten); //imprimimos poten <br>
+													digitalWrite(pin1,HIGH); //enviamos el valor obtenido <br>
+													delay(100);  <br>
+
+													//Conversion <br>
+													int y = 0;  <br>
+													while(k < j) { <br>
+														binary[k] = poten%2; <br>
+														poten = poten / 2; <br>
+														digitalWrite(pin1,binary[k]); //enviamos valor <br>
+														Serial.println(binary[k]); imprimimos en la posicion k <br>
+														delay(100); <br>
+														k++; <br>
+													} <br>
+													digitalWrite(pin1,LOW);  <br>
+													} <br>
+													void setup(){ <br>
+													set(); <br>
+													send(8); //enviamos 8 veces <br>
+													} <br>
+
+													void loop() {} <br>
+											</p>
+											<h3 style="color: rgb(12, 22, 167);">Código que recibe</h3>
+											<p>
+												//Recibe <br>
+												const byte pin= 8;  <br>
+												int digital[] = {0,0,0,0,0,0,0,0,0}; <br>
+												int sum = 0; //iniciamos la variable suma <br>
+												int pote = 1; <br>
+												int conversion[7];  <br>
+												 
+												void set(){ <br>
+												  pinMode(pin, INPUT); //entrada <br>
+												  Serial.begin(9600); //iniciamos la comunicación en serie <br>
+												} <br>
+												void read(int j) { <br>
+												  int i = 0; <br>
+												  while(i < j){ <br>
+													digital[i] = digitalRead(pin);<br>
+													suma = suma + ((digital[i]) * pote);  <br>
+													pote  = pote * 2; <br>
+													delay(100); <br>
+													i++; <br>
+												  }<br>
+												  Serial.println(sum); //imprimimos  la variable suma <br>
+												  suma = 0; <br>
+												  pote = 1;  <br>
+												} <br>
+												void setup(){ <br>
+												  set(); <br>
+												} <br>
+												void loop(){ <br>
+												  if(digitalRead(pin) == HIGH) { <br>
+													delay(120); <br>
+													read(8); <br>
+												  } <br>
+												} <br>
+												
+												
+
+											</p>
+
+											<img src="images/practica4.jpeg" alt="demo" height="600" width="700">
+									</section>
+
+							</div>
+							
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
